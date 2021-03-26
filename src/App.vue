@@ -1,28 +1,105 @@
+/**
+ * Copyright © 2021 Michael. All rights reserved.
+ * 
+ * @author: Michael
+ * @date: 2021-02-26 
+ */
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <Edit
+      @input="handleEditInput"
+      @run="handleRun"
+      @clear="clearShowCode"
+      class="edit"
+    ></Edit>
+    <Show :codeText="editCode" ref="show" class="show">{{ editCode }}</Show> -->
+    <code-mirror
+      @input="handleEditInput"
+      @run="handleRun"
+      @clear="clearShowCode"
+    ></code-mirror>
+    <Show :codeText="editCode" ref="show" class="show"></Show>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Edit from "@/components/edit.vue";
+import Show from "@/components/show.vue";
+import CodeMirror from "@/components/codeMirror.vue";
 export default {
-  name: 'App',
+  data() {
+    return {
+      editCode: "",
+    };
+  },
+
   components: {
-    HelloWorld
+    Edit,
+    Show,
+    CodeMirror,
+  },
+
+  methods: {
+    // 子组件传过来的value
+    handleEditInput(value) {
+      this.editCode = value;
+    },
+    handleRun() {
+      // 方法一：通过$childern选中子组件，然后让子组件上的方法执行
+      // console.log(this.$children);
+      // if (this.editCode) {
+      //   this.$children[1].renderCode();
+      // }
+      // return;
+
+      // 方法二：通过$refs 让子组件上的方法执行
+      // this.$refs["show"].renderCode();
+      this.$refs.show.renderCode();
+    },
+    clearShowCode(code) {
+      console.log("clear");
+      console.log(code);
+      this.editCode = code;
+      // this.$nextTick(() => {
+      //   this.$children[1].clearCode();
+      // });
+    },
+  },
+};
+</script>
+<style lang="less">
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.el-popper .el-scrollbar {
+  background-color: #282c34;
+  .el-select-dropdown__wrap .el-select-dropdown__list {
+    .selected {
+      color: rgb(197, 192, 197);
+    }
+    .el-select-dropdown__item {
+      color: rgb(182, 178, 178);
+    }
+    .el-select-dropdown__item.hover {
+      background-color: #393e49;
+      color: rgb(248, 242, 248);
+    }
+    .el-select-dropdown__item:hover {
+      color: white;
+      background-color: #1c1e24d2;
+    }
   }
 }
-</script>
-
-<style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  // background-color: brown;
+  // display: flex;
+
+  // div {
+  //   width: 50%;
+  //   height: 100%;
+  // }
 }
 </style>

@@ -1,0 +1,90 @@
+.bad 
+  color: white
+  font-size: 54px
+  color: yellowgreen
+  button
+    background-color: tomato
+    font-size: 34px
+    color: white
+
+.bad
+	color: yellowgreen
+	font-size: 54px
+	button
+		background-color: tomato
+		font-size: 34px
+		color: white
+
+ .bad
+      color: #fff
+      background: #000
+
+.bad
+      color: #fff
+      background: #000
+       
+.bad
+      color: #fff
+      background: #000
+      button
+            background-color: tomato
+            font-size: 34px
+            color: white
+"Invalid CSS after "...hite  font-size": expected "}", was ": 54px  color: yell""
+.bad {
+  color: white;
+  font-size: 54px;
+  color: yellowgreen;
+  button{
+    background-color: tomato;
+    font-size: 34px;
+    color: white;
+  }
+}
+
+"sty.css:298:128
+   294| 
+   295| index(list, value)
+   296|   for val, i in list
+   297|     return i if val == value
+   298| .bad   color: white  font-size: 54px  color: yellowgreen  button    background-color: tomato    font-size: 34px    color: white
+---------------------------------------------------------------------------------------------------------------------------------------^
+
+expected "indent", got "eos"
+"
+
+"ParseError: expected "indent", got "outdent"
+    at a.exports.error (http://localhost:8080/static/stylus2.js:1645:61)
+    at a.exports.expect (http://localhost:8080/static/stylus2.js:1649:58)
+    at a.exports.block (http://localhost:8080/static/stylus2.js:1801:137)
+    at a.exports.selector (http://localhost:8080/static/stylus2.js:2016:103)
+    at a.exports.property (http://localhost:8080/static/stylus2.js:1980:63)
+    at a.exports.ident (http://localhost:8080/static/stylus2.js:1962:49)
+    at a.exports.stmt (http://localhost:8080/static/stylus2.js:1766:43)
+    at a.exports.statement (http://localhost:8080/static/stylus2.js:1728:34)
+    at a.exports.block (http://localhost:8080/static/stylus2.js:1808:38)
+    at a.exports.selector (http://localhost:8080/static/stylus2.js:2016:103)"
+
+    "ParseError: sty.styl:302:15
+   298| 
+   299| .bad
+   300|       color: #fff
+   301|       background: #000
+   302|         button
+----------------------^
+   303|             background-color: tomato
+   304|             font-size: 34px
+   305|             color: white
+
+unexpected "indent"
+
+    at Parser.error (http://localhost:8080/static/stylus.js:4002:23)
+    at Parser.stmt (http://localhost:8080/static/stylus.js:4238:48)
+    at Parser.statement (http://localhost:8080/static/stylus.js:4144:33)
+    at Parser.block (http://localhost:8080/static/stylus.js:4267:37)
+    at Parser.selector (http://localhost:8080/static/stylus.js:4685:36)
+    at Parser.stmt (http://localhost:8080/static/stylus.js:4224:49)
+    at Parser.statement (http://localhost:8080/static/stylus.js:4144:33)
+    at Parser.parse (http://localhost:8080/static/stylus.js:3992:37)
+    at Renderer.render (http://localhost:8080/static/stylus.js:5087:34)
+    at Function.exports.render (http://localhost:8080/static/stylus.js:5411:47)"
