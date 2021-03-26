@@ -7,7 +7,7 @@
 <template>
   <div class="show">
     <div class="head">
-      运行结果：
+      <span class="head-text">运行结果：</span>
       <button @click="claerCodeBox" class="claerShow">清空运行结果</button>
     </div>
     <div class="edit-blur"></div>
@@ -299,6 +299,9 @@ export default {
     backdrop-filter: saturate(180%) blur(10px);
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.8);
     position: relative;
+    .head-text {
+      min-width: 80px;
+    }
     button {
       min-width: 128px;
       padding: 10px;
