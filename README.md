@@ -1,4 +1,6 @@
-# vue-edit
+# VueEditor
+
+一个可以运行Vue代码的编辑器，CSS支持Less、Sass/Scss、Stylus
 
 ## Project setup
 ```
@@ -15,5 +17,3 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
