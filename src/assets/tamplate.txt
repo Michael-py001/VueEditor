@@ -1,0 +1,83 @@
+<template>
+  <!-- 在这输入template模板 -->
+<div id="demo">
+  <div @mousemove="xCoordinate"
+       :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
+       class="movearea">
+    <h3>Move your mouse across the screen...</h3>
+    <p>x: {{x}}</p>
+  </div>
+</div>
+</template>
+
+<script>
+// 在这输入JS代码
+export default {
+  data() {
+    return {
+      x: 0
+    }
+  },
+  methods: {
+    xCoordinate(e) {
+      this.x = e.clientX;
+    }
+  }
+};
+</script>
+
+// 支持Sass&Scss&Stylus
+<style lang='stylus'>
+#demo {
+  width: 100vw;
+  height: 100vh;
+}
+
+.movearea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 6vmin;
+  transition: 0.2s background-color ease;
+}
+</style>
+
+
+<template>
+  <!-- 在这输入template模板 -->
+  <div id="test">
+    <div class="bad">{{msg}}
+       <button @click="fn">{{clickText}}</button>
+    </div>
+  </div>
+</template>
+
+<script>
+// 在这输入JS代码
+export default {
+  data() {
+    return {
+      msg:"运行成功啦!",
+      clickText:"Click"
+    };
+  },
+  methods: {
+    fn() {
+      alert("OK");
+    },
+  },
+};
+<\/script>
+
+// 支持Sass&Scss&Stylus
+<style lang='stylus'>
+.bad
+  color:yellowgreen
+  font-size: 54px
+  button
+    background-color: tomato
+    font-size: 34px
+    color: white
+</style>

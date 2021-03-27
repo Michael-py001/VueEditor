@@ -75,6 +75,7 @@ require("codemirror/addon/hint/show-hint");
 require("codemirror/addon/hint/css-hint");
 require("codemirror/addon/hint/html-hint");
 // require("codemirror/addon/hint/javascript-hint");
+
 // 尝试获取全局实例
 const CodeMirror = window.CodeMirror || _CodeMirror;
 emmet(CodeMirror);
@@ -93,13 +94,16 @@ export default {
   data() {
     return {
       // 内部真实的内容
-      code: `<template>
-  <!-- 在这输入template模板 -->
-  <div id="test">
-    <div class="bad">{{msg}}
-       <button @click="fn">{{clickText}}</button>
-    </div>
+      code:
+        `<template>
+<div id="demo">
+  <div @mousemove="xCoordinate"` +
+        ':style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"' +
+        `class="movearea">
+    <h3>Move your mouse across the screen...</h3>
+    <p>x: {{x}}</p>
   </div>
+</div>
 </template>
 
 <script>
@@ -107,28 +111,36 @@ export default {
 export default {
   data() {
     return {
-      msg:"运行成功啦!",
-      clickText:"Click"
-    };
+      x: 0
+    }
   },
   methods: {
-    fn() {
-      alert("OK");
-    },
-  },
+    xCoordinate(e) {
+      this.x = e.clientX;
+    }
+  }
 };
 <\/script>
 
-// 支持Sass&Scss&Stylus
 <style lang='stylus'>
-.bad
-  color:yellowgreen
-  font-size: 54px
-  button
-    background-color: tomato
-    font-size: 34px
-    color: white
-</style>`,
+body
+  overflow:hidden
+#demo 
+  width: 100vw;
+  height: 100vh;
+  
+
+
+.movearea
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 6vmin;
+  transition: 0.4s background-color ease;
+  
+</style>>`,
       // 默认的语法类型，用于elementui上的select默认显示
       mode: "Vue",
       // 编辑器实例

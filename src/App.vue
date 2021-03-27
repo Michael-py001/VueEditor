@@ -17,8 +17,16 @@
       @input="handleEditInput"
       @run="handleRun"
       @clear="clearShowCode"
+      :style="`width:${editWidth}`"
+      class="codeMirror"
     ></code-mirror>
-    <Show :codeText="editCode" ref="show" class="show"></Show>
+    <Show
+      :codeText="editCode"
+      ref="show"
+      class="show"
+      :style="`width:${showWidth}`"
+      @changeWidth="handleChangeWidth"
+    ></Show>
   </div>
 </template>
 
@@ -30,6 +38,8 @@ export default {
   data() {
     return {
       editCode: "",
+      showWidth: "50%",
+      editWidth: "50%",
     };
   },
 
@@ -40,6 +50,14 @@ export default {
   },
 
   methods: {
+    // 改变宽度
+    handleChangeWidth(v1, v2) {
+      console.log(v1, v2);
+      // this.$refs.show.webkitCancelFullScreen();
+      // this.$refs.show.webkitRequestFullScreen();
+      this.editWidth = v1;
+      this.showWidth = v2;
+    },
     // 子组件传过来的value
     handleEditInput(value) {
       this.editCode = value;
@@ -94,12 +112,11 @@ export default {
 }
 #app {
   display: flex;
-  // background-color: brown;
-  // display: flex;
-
-  // div {
-  //   width: 50%;
-  //   height: 100%;
-  // }
+  .codeMirror {
+    transition: 0.3s width ease;
+  }
+  .show {
+    transition: 0.3s width ease;
+  }
 }
 </style>

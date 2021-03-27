@@ -5,10 +5,16 @@
  * @date: 2021-02-26 
  */
 <template>
-  <div class="show">
+  <div class="show" ref="show1">
     <div class="head">
       <span class="head-text">运行结果：</span>
       <button @click="claerCodeBox" class="claerShow">清空运行结果</button>
+      <button @click="changeWidth" class="claerShow" v-if="isFull" ref="full1">
+        退出全屏
+      </button>
+      <button @click="changeWidth" class="claerShow" v-else ref="full2">
+        全屏显示
+      </button>
     </div>
     <div class="edit-blur"></div>
 
@@ -41,6 +47,7 @@ export default {
       code: '<div class="edit-blur"></div>',
       isShow: true,
       lang: "",
+      isFull: false,
     };
   },
   props: {
@@ -140,6 +147,45 @@ export default {
   components: {},
 
   methods: {
+    changeWidth(e) {
+      console.log(e);
+      let de = document.documentElement;
+      if (this.isFull) {
+        this.$emit("changeWidth", "50%", "50%");
+        // de.webkitCancelFullScreen();
+        // console.log(this.$refs.show);
+        this.isFull = false;
+        if (document.exitFullscreen) {
+          //退出全屏  需要document来执行，不能是Element标签
+          document.exitFullscreen();
+          console.log(1);
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+          console.log(2);
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen();
+          console.log(3);
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+          console.log(4);
+        }
+        return;
+      } else {
+        this.$emit("changeWidth", "0%", "100%");
+        var el = document.documentElement; //全屏显示 需要指定任意一个Element标签，这里的document.documentElement 表示整个文档流全屏，当然也可以指定一个div全屏
+        var rfs =
+          el.requestFullScreen ||
+          el.webkitRequestFullScreen ||
+          el.mozRequestFullScreen ||
+          el.msRequestFullscreen;
+        if (typeof rfs != "undefined" && rfs) {
+          rfs.call(el);
+        }
+
+        this.isFull = true;
+        return;
+      }
+    },
     //   拿到template,script,style标签里的内容
     getSource(type) {
       const reg = new RegExp(`<${type}[^>]*>((.|\\n)*)</${type}>`);
