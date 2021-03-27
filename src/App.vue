@@ -91,6 +91,14 @@ export default {
   padding: 0;
 }
 
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: red;
+  // font-size: 10px;
+}
+
 .el-popper .el-scrollbar {
   background-color: #282c34;
   .el-select-dropdown__wrap .el-select-dropdown__list {

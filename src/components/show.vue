@@ -7,8 +7,7 @@
 <template>
   <div class="show" ref="show1">
     <div class="head">
-      <span class="head-text">运行结果：</span>
-      <button @click="claerCodeBox" class="claerShow">清空运行结果</button>
+      <button @click="claerCodeBox" class="claerShow">清空结果</button>
       <button @click="changeWidth" class="claerShow" v-if="isFull" ref="full1">
         退出全屏
       </button>
@@ -324,6 +323,7 @@ export default {
     opacity: 1;
   }
 }
+
 .show {
   width: 50%;
   display: flex;
@@ -345,11 +345,9 @@ export default {
     backdrop-filter: saturate(180%) blur(10px);
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.8);
     position: relative;
-    .head-text {
-      min-width: 80px;
-    }
+
     button {
-      min-width: 128px;
+      // min-width: 112px;
       padding: 10px;
       text-align: center;
       line-height: 10px;
@@ -445,6 +443,18 @@ export default {
         height: 100%;
         white-space: pre-wrap; //重点，white-space用来控制换行，pre-wrap：空白字符不会被合并和忽略
         word-break: keep-all; //保持单词不被断开换行，break-all就会强制换行
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .show {
+    .head {
+      button {
+        // width: 30px;
+        font-size: 16px;
+        // padding: 0 2px;
+        // background-color: cadetblue;
       }
     }
   }

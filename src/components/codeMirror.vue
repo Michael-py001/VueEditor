@@ -24,7 +24,7 @@
         class="topnav_box"
         ref="textarea"
       ></textarea>
-      <el-select
+      <!-- <el-select
         class="code-mode-select"
         size="mini"
         v-model="mode"
@@ -37,7 +37,7 @@
           :value="mode.value"
         >
         </el-option>
-      </el-select>
+      </el-select> -->
     </main>
   </div>
 </template>
@@ -243,9 +243,7 @@ body
     },
     clearCode() {
       console.log(this.code);
-      const comfir = window.confirm(
-        "您确定要清空输入框吗？一旦清空将无法恢复！"
-      );
+      const comfir = window.confirm("您确定要清空输入框吗？");
       if (comfir) {
         this.code = "";
         console.log("清空:", this.code);
@@ -339,6 +337,7 @@ body
     }
   }
 }
+
 .edit {
   position: relative;
   width: 50%;
@@ -371,13 +370,13 @@ body
     .title {
       text-shadow: 4px 4px 3px rgb(0, 0, 0, 99%);
       font-weight: 600;
-      font-size: 23px;
+      font-size: 26px;
       line-height: 30px;
       user-select: none;
     }
 
     button {
-      min-width: 56px;
+      // min-width: 56px;
       padding: 10px;
       text-align: center;
       line-height: 10px;
@@ -401,6 +400,7 @@ body
       box-shadow: 0 0 6px rgba(239, 241, 239, 0.911);
     }
   }
+
   .edit-blur {
     content: "";
     position: absolute;
@@ -503,6 +503,21 @@ body
       }
       .CodeMirror-scrollbar-filler {
         visibility: hidden;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .edit {
+    .edit-options {
+      .title {
+        font-size: 14px;
+      }
+      button {
+        // width: 30px;
+        font-size: 16px;
+        padding: 0 8px;
+        // background-color: cadetblue;
       }
     }
   }
