@@ -17,6 +17,9 @@ module.exports = {
                         drop_debugger: false,
                         pure_funcs: ['console.log'], // 移除console
                     },
+                    format: {
+                        comments: false,
+                      },
                 },
             }))
         }
