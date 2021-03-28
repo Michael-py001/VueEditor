@@ -8,12 +8,20 @@
   <div class="show" ref="show1">
     <div class="head">
       <button @click="claerCodeBox" class="claerShow">清空结果</button>
-      <button @click="changeWidth" class="claerShow" v-if="isFull" ref="full1">
-        退出全屏
-      </button>
-      <button @click="changeWidth" class="claerShow" v-else ref="full2">
-        全屏显示
-      </button>
+      <button @click="back" class="claerShow" v-if="isMobile">返回</button>
+      <template v-else>
+        <button
+          @click="changeWidth"
+          class="claerShow"
+          v-if="isFull"
+          ref="full1"
+        >
+          退出全屏
+        </button>
+        <button @click="changeWidth" class="claerShow" v-else ref="full2">
+          全屏显示
+        </button>
+      </template>
     </div>
     <div class="edit-blur"></div>
 
@@ -55,6 +63,10 @@ export default {
     codeText: {
       type: String,
       default: "",
+    },
+    isMobile: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -146,6 +158,11 @@ export default {
   components: {},
 
   methods: {
+    // 返回编辑
+    back() {
+      this.$emit("back");
+    },
+    // 全屏开关
     changeWidth(e) {
       console.log(e);
       let de = document.documentElement;
@@ -298,6 +315,7 @@ export default {
         element.innerText = cssStr;
         cssStyle = element;
       }
+      console.log("cssStyle", cssStyle);
       this.$refs.iframeBox.contentWindow.document.body.appendChild(cssStyle);
       this.$refs.iframeBox.contentWindow.document.body.appendChild(html_js);
       // console.log("cssStyle:", cssStyle);

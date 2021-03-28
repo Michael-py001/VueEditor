@@ -19,13 +19,16 @@
       @clear="clearShowCode"
       :style="`width:${editWidth}`"
       class="codeMirror"
+      ref="edit"
     ></code-mirror>
     <Show
+      @back="back"
       :codeText="editCode"
       ref="show"
       class="show"
       :style="`width:${showWidth}`"
       @changeWidth="handleChangeWidth"
+      :isMobile="isMobile"
     ></Show>
   </div>
 </template>
@@ -40,9 +43,21 @@ export default {
       editCode: "",
       showWidth: "50%",
       editWidth: "50%",
+      isMobile: false,
     };
   },
-
+  mounted() {
+    let width = document.documentElement.getBoundingClientRect().width;
+    console.log("width:", width);
+    if (width < 768) {
+      // this.showWidth = "0%";
+      this.$refs.show.$el.style.display = "none";
+      console.log(this.$refs.show);
+      this.editWidth = "100%";
+      this.isMobile = true;
+    }
+    console.log(this.shouWidth);
+  },
   components: {
     Edit,
     Show,
@@ -50,6 +65,13 @@ export default {
   },
 
   methods: {
+    // 返回编辑
+    back() {
+      console.log("back");
+      this.showWidth = "0%";
+      this.$refs.show.$el.style.display = "none";
+      this.editWidth = "100%";
+    },
     // 改变宽度
     handleChangeWidth(v1, v2) {
       console.log(v1, v2);
@@ -73,6 +95,13 @@ export default {
       // 方法二：通过$refs 让子组件上的方法执行
       // this.$refs["show"].renderCode();
       this.$refs.show.renderCode();
+      if (this.isMobile) {
+        this.$refs.show.$el.style.display = "block";
+        // this.$refs.edit.$el.style.display = "none";
+        console.log(this.$refs.show);
+        this.showWidth = "100%";
+        this.editWidth = "0%";
+      }
     },
     clearShowCode(code) {
       console.log("clear");
@@ -125,6 +154,18 @@ html {
   }
   .show {
     transition: 0.3s width ease;
+  }
+}
+@media screen and (max-width: 768px) {
+  #app {
+    .codeMirror {
+      transition: 0.3s width ease;
+      width: 100%;
+    }
+    .show {
+      transition: 0.3s width ease;
+      widows: 50%;
+    }
   }
 }
 </style>

@@ -231,10 +231,8 @@ body
   mounted() {
     // 初始化
     this._initialize();
-    // 通知更新子组件2
-    setTimeout(() => {
-      this.$emit("input", this.code);
-    }, 500);
+    // 给父组件的editCode赋值，传给子组件show
+    this.$emit("input", this.code);
   },
   methods: {
     handleInput(e) {
@@ -511,7 +509,8 @@ body
   .edit {
     .edit-options {
       .title {
-        font-size: 14px;
+        font-size: 24px;
+        line-height: 38px;
       }
       button {
         // width: 30px;
