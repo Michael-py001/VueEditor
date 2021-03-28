@@ -124,7 +124,7 @@ html {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: red;
+  // background: red;
   // font-size: 10px;
 }
 
