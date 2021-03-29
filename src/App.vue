@@ -68,10 +68,10 @@ export default {
     // 返回编辑
     back() {
       console.log("back");
-      this.showWidth = "0%";
-      this.$refs.show.$el.style.display = "none";
       this.$refs.edit.$el.style.display = "block";
       this.editWidth = "100%";
+      // this.showWidth = "0%";
+      this.$refs.show.$el.style.display = "none";
     },
     // 改变宽度
     handleChangeWidth(v1, v2) {
@@ -125,8 +125,7 @@ html {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  // background: red;
-  // font-size: 10px;
+  background: #23262c;
 }
 
 .el-popper .el-scrollbar {
