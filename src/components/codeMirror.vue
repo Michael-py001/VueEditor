@@ -140,7 +140,7 @@ body
   padding: 6vmin;
   transition: 0.4s background-color ease;
   
-</style>>`,
+</style>`,
       // 默认的语法类型，用于elementui上的select默认显示
       mode: "Vue",
       // 编辑器实例
@@ -356,6 +356,7 @@ body
     align-items: center;
     width: 100%;
     height: 6%;
+    min-height: 40px;
     // border-bottom: 1px solid #666;
     padding: 5px;
     background: rgba(31, 33, 46, 0.993);
