@@ -353,6 +353,7 @@ body
     // background-color: chocolate;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     width: 100%;
     height: 6%;
     // border-bottom: 1px solid #666;
@@ -374,11 +375,13 @@ body
     }
 
     button {
-      // min-width: 56px;
-      padding: 10px;
+      min-width: 50px;
+      width: 50px;
+      height: 28px;
       text-align: center;
-      line-height: 10px;
-      height: 100%;
+      align-items: center;
+      justify-content: center;
+      line-height: 28px;
       border-radius: 10px;
       border: none;
       background-color: #393e49;
@@ -506,6 +509,10 @@ body
   }
 }
 @media screen and (max-width: 768px) {
+  .CodeMirror pre.CodeMirror-line,
+  .CodeMirror pre.CodeMirror-line-like {
+    font-size: 22px;
+  }
   .edit {
     .edit-options {
       .title {
@@ -519,6 +526,18 @@ body
         // background-color: cadetblue;
       }
     }
+  }
+}
+@media screen and (min-width: 375px) and( max-width: 414px) {
+  .CodeMirror pre.CodeMirror-line,
+  .CodeMirror pre.CodeMirror-line-like {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 320px) and( max-width: 374px) {
+  .CodeMirror pre.CodeMirror-line,
+  .CodeMirror pre.CodeMirror-line-like {
+    font-size: 18px;
   }
 }
 </style>

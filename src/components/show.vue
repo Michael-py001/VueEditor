@@ -350,14 +350,16 @@ export default {
     box-sizing: border-box;
     width: 100%;
     height: 6%;
+    min-height: 34px;
     padding: 5px;
     // border-bottom: 1px solid #666;
     font-weight: 600;
-    line-height: 30px;
+    // line-height: 30px;
     // background: #282c34;
     z-index: 99;
     color: #d5deee;
     display: flex;
+    align-items: center;
     justify-content: space-around;
     background: rgba(31, 33, 46, 0.993);
     backdrop-filter: saturate(180%) blur(10px);
@@ -365,11 +367,13 @@ export default {
     position: relative;
 
     button {
-      // min-width: 112px;
-      padding: 10px;
       text-align: center;
-      line-height: 10px;
-      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 28px;
+      width: 80px;
+      height: 28px;
       border-radius: 10px;
       border: none;
       background-color: #393e49;

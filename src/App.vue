@@ -70,6 +70,7 @@ export default {
       console.log("back");
       this.showWidth = "0%";
       this.$refs.show.$el.style.display = "none";
+      this.$refs.edit.$el.style.display = "block";
       this.editWidth = "100%";
     },
     // 改变宽度
