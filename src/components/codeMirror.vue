@@ -95,15 +95,17 @@ export default {
     return {
       // 内部真实的内容
       code:
-        `<template>
-<div id="demo">
-  <div @mousemove="xCoordinate"` +
+        `
+//模板内容
+<template>
+  <div id="demo">
+    <div @mousemove="xCoordinate"` +
         ':style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"' +
         `class="movearea">
-    <h3>Move your mouse across the screen...</h3>
-    <p>x: {{x}}</p>
+      <h3>Move your mouse across the screen...</h3>
+      <p>x: {{x}}</p>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -121,7 +123,7 @@ export default {
   }
 };
 <\/script>
-
+//支持Less、Sass/Scss、Stylus
 <style lang='stylus'>
 body
   overflow:hidden
@@ -129,8 +131,6 @@ body
   width: 100vw;
   height: 100vh;
   
-
-
 .movearea
   position: absolute;
   top: 0;
